@@ -12,12 +12,14 @@ interface InputProps{
 
 
 
- const Input = () => {
+ const Input: React.FC<InputProps> = ({id,onChange,value,label,type}) => {
   return (
     <div className='relative'>
         <input
-        id='email'
-         type="text"
+        id={id}
+        type={type}
+        value={value}
+        onChange={onChange}
         className='
         block
         rounded-md
@@ -26,9 +28,11 @@ interface InputProps{
         w-full
         text-md
         text-white
-        bg-neutral-700
+        bg-neutral-800
+         bg-opacity-45
+         
         appearance-none
-        focus:outline-none
+        focus:outline-white
         focus:ring-0
         peer' 
         placeholder=' '
@@ -46,13 +50,15 @@ interface InputProps{
         z-10
         origin-[0]
         left-6
+        
         peer-placeholder-shown:scale-100
         peer-placeholder-shown:translate-y-0
         peer-focus:scale-75
         peer-focus:-translate-y-3
+        
         '
         
-        >Email</label>
+        >{label}</label>
     </div>
   )
 }
