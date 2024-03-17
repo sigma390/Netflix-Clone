@@ -7,11 +7,12 @@ const Auth = ()=>{
     //state Vars
 
     const[email, setEmail] = useState('');
+    const[username, setUsername] = useState('');
     const[password,setPassword] = useState('')
-    const[variant,setVariant] = useState('Sign in')
+    const[variant,setVariant] = useState('login')
     //toggl;e for signup and sign in
     const toggleVar = useCallback(()=>{
-        setVariant((currantVar) => currantVar==='Sign in'?'Register':'Sign in')
+        setVariant((currantVar) => currantVar==='login'?'Register':'login')
     },[])
 
 
@@ -25,9 +26,18 @@ const Auth = ()=>{
                 <div className='flex justify-center'>
                     <div className='bg-black bg-opacity-70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full '>
                         <h2 className=' text-white text-4xl mb-8 font-semibold '>
-                            Sign in
+                            {variant === 'login'?'Sign in':'Register'}
                         </h2>
                         <div className='flex flex-col gap-4'>
+                           {variant==='Register' && (<Input
+                            label='Username '
+                        
+                            onChange={(e:any)=>{setUsername(e.target.value)}}
+                            value={username}
+                            id='name'
+                            
+                            />) } 
+                        
                             <Input
                             label='Email or phone number '
                             type='email'
@@ -45,6 +55,11 @@ const Auth = ()=>{
                             id='password'
                             
                             />
+
+
+                            
+
+
                             <button className='
                             bg-[#e60914] 
                             text-white
@@ -55,47 +70,68 @@ const Auth = ()=>{
                             h-10
                             '
                             >
-                                Sign In
+                                {/* //use of variant */}
+                            {variant ==='login'?'Sign In':'Sign Up'  }
+                               
 
 
 
                             </button>
-                            <button className="
-                            hover:underline
-                            
-                            text-white mt-1 text-center">
-                              Forgot password?
-                            </button>
-                            <div className='flex flex-row mt-16'>
-                            <input
-                            id='checkbox'
-                            
-                            type="checkbox"
-                            className=' form-checkbox
-                            
-                            outline-white
-                            
-                            h-[18px] w-[18px] accent-black'
-                            
-                            />
-                            <label className='text-white
-                            px-2
-                            
-                            ' htmlFor="checkbox">
 
-                                Remember Me
-                            </label>
+                            {variant==='login'&&(
+                                <button className="
+                                hover:underline
+                                
+                                text-white mt-1 text-center">
+                                  Forgot password?
+                                </button>
 
-                            </div>
+
+
+                            )}
+
+                            {variant==='login' && (
+                                <div className='flex flex-row mt-16'>
+                                <input
+                                id='checkbox'
+                                
+                                type="checkbox"
+                                className=' form-checkbox
+                                
+                                outline-white
+                                
+                                h-[18px] w-[18px] accent-black'
+                                
+                                />
+                                <label className='text-white
+                                px-2
+                                
+                                ' htmlFor="checkbox">
+    
+                                    Remember Me
+                                </label>
+    
+                                </div>
+
+                            )}
+                            
+                            
                             <p className="text-neutral-500 mt-1">
-                            New to Netflix?
-                            <button
+                            
+                            {variant==='login'?'New to Netflix?':'Already a User?'}
+                            <span
                             className='
                             font-semibold
                             text-white ml-1 :hover:underline
                             cursor-pointer'
+
+                            //to connect to Var
+                            onClick={toggleVar}
                             
-                            >Sign up now</button>
+                            >
+                            {variant==='login'?'Sign up now':'Sign In'}
+                            
+                            </span>
                             </p>
                             <p className="text-neutral-500 text-sm mt-1">
                             This page is protected by Google reCAPTCHA 
