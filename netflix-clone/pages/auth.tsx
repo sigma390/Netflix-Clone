@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Input from '../components/Input';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const Auth = ()=>{
 
@@ -8,6 +8,11 @@ const Auth = ()=>{
 
     const[email, setEmail] = useState('');
     const[password,setPassword] = useState('')
+    const[variant,setVariant] = useState('Sign in')
+    //toggl;e for signup and sign in
+    const toggleVar = useCallback(()=>{
+        setVariant((currantVar) => currantVar==='Sign in'?'Register':'Sign in')
+    },[])
 
 
 
