@@ -21,6 +21,8 @@ interface InputProps{
         value={value}
         onChange={onChange}
         className='
+         border
+         border-neutral-700
         block
         rounded-md
         px-6

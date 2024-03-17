@@ -55,12 +55,22 @@ const Auth = ()=>{
 
 
                             </button>
-                            <button className="text-white mt-1 text-center">
+                            <button className="
+                            hover:underline
+                            
+                            text-white mt-1 text-center">
                               Forgot password?
                             </button>
-                            <div className='flex flex-row'>
-                            <input type="checkbox"
-                            className=' accent-black'
+                            <div className='flex flex-row mt-16'>
+                            <input
+                            id='checkbox'
+                            
+                            type="checkbox"
+                            className=' form-checkbox
+                            
+                            outline-white
+                            
+                            h-[18px] w-[18px] accent-black'
                             
                             />
                             <label className='text-white
@@ -72,6 +82,24 @@ const Auth = ()=>{
                             </label>
 
                             </div>
+                            <p className="text-neutral-500 mt-1">
+                            New to Netflix?
+                            <button
+                            className='
+                            font-semibold
+                            text-white ml-1 :hover:underline
+                            cursor-pointer'
+                            
+                            >Sign up now</button>
+                            </p>
+                            <p className="text-neutral-500 text-sm mt-1">
+                            This page is protected by Google reCAPTCHA 
+                            to ensure you're not a bot. <span className='
+                            text-blue-500
+                            hover:underline
+                            
+                            '>Learn more.</span> 
+                            </p>
 
                         
 
