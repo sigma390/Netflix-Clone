@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Input from '../components/Input';
 import { useCallback, useState } from 'react';
-
+import axios from 'axios';
 const Auth = ()=>{
 
     //state Vars
@@ -15,7 +15,11 @@ const Auth = ()=>{
         setVariant((currantVar) => currantVar==='login'?'Register':'login')
     },[])
 
+    //================> function for register <======================
+    
+    const register = useCallback(async()=>{
 
+    },[])
 
     return (
         <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-center bg-fixed bg-no-repeat bg-cover">
