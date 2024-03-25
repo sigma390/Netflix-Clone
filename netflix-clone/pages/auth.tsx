@@ -18,6 +18,16 @@ const Auth = ()=>{
     //================> function for register <======================
     
     const register = useCallback(async()=>{
+        try {
+            await axios.post('/api/register',{
+                email,
+                username,
+                password
+            })
+            
+        } catch (error) {
+            console.log(error);
+        }
 
     },[])
 
