@@ -7,7 +7,7 @@ const Auth = ()=>{
     //state Vars
 
     const[email, setEmail] = useState('');
-    const[username, setUsername] = useState('');
+    const[name, setUsername] = useState('');
     const[password,setPassword] = useState('')
     const[variant,setVariant] = useState('login')
     //toggl;e for signup and sign in
@@ -21,7 +21,7 @@ const Auth = ()=>{
         try {
             await axios.post('/api/register',{
                 email,
-                username,
+                name,
                 password
             })
             
@@ -29,7 +29,7 @@ const Auth = ()=>{
             console.log(error);
         }
 
-    },[])
+    },[email,name,password])
 
     return (
         <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-center bg-fixed bg-no-repeat bg-cover">
@@ -47,7 +47,7 @@ const Auth = ()=>{
                             label='Username '
                         
                             onChange={(e:any)=>{setUsername(e.target.value)}}
-                            value={username}
+                            value={name}
                             id='name'
                             
                             />) } 
@@ -74,7 +74,10 @@ const Auth = ()=>{
                             
 
 
-                            <button className='
+                            <button
+                            onClick={register}
+                            
+                            className='
                             bg-[#e60914] 
                             text-white
                             rounded-md
