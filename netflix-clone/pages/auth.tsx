@@ -3,10 +3,11 @@ import Input from '../components/Input';
 import { useCallback, useState } from 'react';
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
 const Auth = ()=>{
 
     //state Vars
-
+    const router = useRouter();
     const[email, setEmail] = useState('');
     const[name, setUsername] = useState('');
     const[password,setPassword] = useState('')
@@ -15,6 +16,27 @@ const Auth = ()=>{
     const toggleVar = useCallback(()=>{
         setVariant((currantVar) => currantVar==='login'?'Register':'login')
     },[])
+
+
+    
+
+    //================> function for Login <======================
+    
+    const login = useCallback(async()=>{
+        try {
+            await signIn('credentials',{
+                email,
+                password,
+                redirect:false,
+                callbackUrl:'/'
+            });
+            router.push('/')
+            
+        } catch (error) {
+            console.log(error);
+        }
+
+    },[email,password, router])
 
     //================> function for register <======================
     
@@ -29,27 +51,9 @@ const Auth = ()=>{
         } catch (error) {
             console.log(error);
         }
+        login();
+    },[email,name,password, login])
 
-    },[email,name,password])
-
-
-
-    //================> function for Login <======================
-    
-    const login = useCallback(async()=>{
-        try {
-            await signIn('credentials',{
-                email,
-                password,
-                redirect:false,
-                callbackUrl:'/'
-            });
-            
-        } catch (error) {
-            console.log(error);
-        }
-
-    },[email,password])
 
     return (
         <div className="relative h-full w-full bg-[url('/images/hero.jpg')] bg-center bg-fixed bg-no-repeat bg-cover">
