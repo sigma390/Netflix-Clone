@@ -4,6 +4,8 @@ import { useCallback, useState } from 'react';
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import { FcGoogle } from 'react-icons/fc';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 const Auth = ()=>{
 
     //state Vars
@@ -118,6 +120,22 @@ const Auth = ()=>{
 
 
                             </button>
+                            <div className="flex flex-row items-center gap-4 mt-8 justify-center">
+                                <div className="w-10 h-10
+                                 bg-white rounded-full
+                                  flex items-center justify-center
+                                   cursor-pointer hover:opacity-80
+                                    transition">
+                                        <FaGoogle size={30}/>
+                                    </div>
+                                    <div className="w-10 h-10
+                                 bg-white rounded-full
+                                  flex items-center justify-center
+                                   cursor-pointer hover:opacity-80
+                                    transition">
+                                        <FaGithub size={30}/>
+                                    </div>
+                            </div>
 
                             {variant==='login'&&(
                                 <button className="
@@ -132,7 +150,7 @@ const Auth = ()=>{
                             )}
 
                             {variant==='login' && (
-                                <div className='flex flex-row mt-16'>
+                                <div className='flex flex-row mt-8'>
                                 <input
                                 id='checkbox'
                                 
